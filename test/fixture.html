@@ -19,5 +19,13 @@
       <a href="/someone/status/1/likes"><span>56</span> Likes</a>
     </article>
     <script src="../content.js"></script>
+    <script>
+      setTimeout(() => {
+        const button = document.createElement("button");
+        button.dataset.testid = "reply";
+        button.innerHTML = '<svg aria-hidden="true"></svg><span>99</span>';
+        document.querySelector("article [role=group]").append(button);
+      }, 100);
+    </script>
   </body>
 </html>
