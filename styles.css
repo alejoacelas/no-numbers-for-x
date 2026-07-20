@@ -11,3 +11,13 @@ article a[href*="/analytics?"] [data-testid="app-text-transition-container"],
 .no-numbers-for-x-count {
   display: none !important;
 }
+
+/* Leave the icons legible, but make engagement-detail links non-interactive. */
+article a[href$="/analytics"],
+article a[href*="/analytics?"],
+article a[href$="/retweets"],
+article a[href*="/retweets/with_comments"],
+article a[href$="/likes"] {
+  cursor: default !important;
+  pointer-events: none !important;
+}

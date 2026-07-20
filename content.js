@@ -2,6 +2,7 @@
   "use strict";
 
   const COUNT_CLASS = "no-numbers-for-x-count";
+  const ENGAGEMENT_DETAIL_PATH = /^(\/[^/]+\/status\/\d+)\/(?:analytics|retweets(?:\/with_comments)?|likes)\/?$/;
   const ENGAGEMENT_TARGETS = [
     'article [data-testid="reply"]',
     'article [data-testid="retweet"]',
@@ -20,6 +21,25 @@
   const HAS_NUMBER = /\d/;
   let scheduled = false;
 
+  function redirectFromEngagementDetails() {
+    const match = location.pathname.match(ENGAGEMENT_DETAIL_PATH);
+    if (!match) return false;
+
+    location.replace(`${location.origin}${match[1]}`);
+    return true;
+  }
+
+  function blockEngagementDetailClick(event) {
+    const link = event.target.closest?.("a[href]");
+    if (!link) return;
+
+    const destination = new URL(link.href, location.href);
+    if (!ENGAGEMENT_DETAIL_PATH.test(destination.pathname)) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }
+
   function hideCountText(target) {
     for (const span of target.querySelectorAll("span")) {
       if (HAS_NUMBER.test(span.textContent || "") && !span.querySelector("svg")) {
@@ -30,6 +50,8 @@
 
   function hideCounts() {
     scheduled = false;
+    if (redirectFromEngagementDetails()) return;
+
     for (const target of document.querySelectorAll(ENGAGEMENT_TARGETS)) {
       hideCountText(target);
     }
@@ -42,6 +64,10 @@
   }
 
   const observer = new MutationObserver(scheduleHide);
+
+  document.addEventListener("click", blockEngagementDetailClick, true);
+
+  if (redirectFromEngagementDetails()) return;
 
   function start() {
     hideCounts();

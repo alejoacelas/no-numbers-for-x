@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "No Numbers for X",
   "description": "Hide engagement counts on X without disabling the engagement buttons.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "content_scripts": [
     {
       "matches": [
