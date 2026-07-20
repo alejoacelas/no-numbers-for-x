@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>No Numbers for X test</title>
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <article>
+      <p>A tweet whose controls should stay usable.</p>
+      <div role="group" aria-label="12 replies, 34 reposts, 56 likes, 789 views">
+        <button data-testid="reply"><svg aria-hidden="true"></svg><span>12</span></button>
+        <button data-testid="retweet"><svg aria-hidden="true"></svg><span>34</span></button>
+        <button data-testid="like"><svg aria-hidden="true"></svg><span>56</span></button>
+        <a href="/someone/status/1/analytics"><svg aria-hidden="true"></svg><span>789</span></a>
+      </div>
+      <a href="/someone/status/1/retweets"><span>34</span> Reposts</a>
+      <a href="/someone/status/1/likes"><span>56</span> Likes</a>
+    </article>
+    <script src="../content.js"></script>
+  </body>
+</html>
