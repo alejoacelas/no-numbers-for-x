@@ -1,8 +1,3 @@
----
-human_edit_tracking:
-  enabled: true
-  history: []
----
 # No Numbers for X
 
 I use this Chrome extension to hide reply, repost, like, bookmark and view counts on X while keeping the action buttons usable. It also blocks engagement-detail links and redirects direct analytics visits back to the tweet.
